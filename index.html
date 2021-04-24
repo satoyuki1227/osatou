@@ -6,11 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>さとうゆうき</title>
+  <!-- ressの読み込み -->
   <link rel='stylesheet' href='https://unpkg.com/ress/dist/ress.min.css'>
+  <!-- フォントの読み込み -->
   <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="style/lightbox.css">
+  <!-- jquery読み込み -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
   <script>
@@ -107,7 +110,7 @@
       });
     });
   </script>
-  
+
   <script>
     $(function () {
       $('.fd-in').on('inview', function (event, isInView, visiblePartX, visiblePartY) {
@@ -119,7 +122,7 @@
       });
     });
   </script>
-  
+
   <script>
     $(function () {
       $('.navToggle').click(function () {
@@ -139,7 +142,7 @@
       });
     });
   </script>
-
+  <!-- マウスストーカーの実装 -->
   <script>
     if (!navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/)) {
       $(function () {
@@ -159,7 +162,7 @@
       });
     }
   </script>
- 
+
 </head>
 
 <body>
@@ -200,10 +203,11 @@
       <div class="about__text">
         <p>
           はじめまして。<br>
-          さとうゆうきと申します。<br>
-          WEBエンジニアを目指して就職活動中です。<br>
-          素朴で優しいデザインが好きです。<br>
-
+          さとうゆうきと申します。
+        </p>
+        <p>
+          将来性やニーズのある専門的な知識を身につけることで
+          手に職をつけたいと思いWEBコーディングの勉強をしています。
         </p>
       </div>
     </div>
@@ -218,28 +222,23 @@
       <li class="point__item">
         <i>1</i>
         <h4 class="point__item__heading">
-          向学心
+          現在の学習状況
         </h4>
         <p>
-          向学心が強いです。これは常に学び続ける必要のあるエンジニアに必要な能力だと思っています。
+          HTML/CSS(SCSS)+jQueryを用いた<br>簡単なサイトのコーディング<br>
+          現在はCSS設計を学習中で、BEMなどを参考に可読性、保守性、再利用性の高いコーディングを心掛けています。
         </p>
       </li>
       <li class="point__item">
         <i>2</i>
         <h4 class="point__item__heading">
-          傾聴力
+          今後やりたいこと
         </h4>
         <p>
-          私には傾聴力があります。
-        </p>
-      </li>
-      <li class="point__item">
-        <i>3</i>
-        <h4 class="point__item__heading">
-          現在のスキル
-        </h4>
-        <p>
-          HTML/CSS(SASS)+jQueryで簡単なものであれば作れるようになりました。現在はCSS設計を学習中で、BEMなどを参考に可読性、保守性、再利用性の高いセマンティックなコーディングをできるように心掛けています。
+          ・WordPressの学習<br>
+          ・PHPの学習<br>
+          ・JavaScriptの学習<br>
+          ・デザインソフトの学習(Photoshop/Illustrator/XDなど)
         </p>
       </li>
     </ol>
@@ -273,6 +272,8 @@
     <p class="section__title__description">お問い合わせ</p>
     <form class="contact-form">
       <input type="text" name="name" placeholder="NAME">
+      <input type="tel" name="tel" placeholder="TEL">
+      <input type="email" name="email" placeholder="Email">
       <textarea name="message" placeholder="MESSAGE"></textarea>
       <small>※こちらはデザイン例であり実際にメッセージは送れません</small>
       <input type="submit" value="SEND MESSAGE">
