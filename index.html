@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>さとうゆうき</title>
+  <link rel='stylesheet' href='https://unpkg.com/ress/dist/ress.min.css'>
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style/lightbox.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  <script>
+    ! function (a) {
+      "function" == typeof define && define.amd ? define(["jquery"], a) : "object" == typeof exports ? module.exports =
+        a(require("jquery")) : a(jQuery)
+    }(function (a) {
+      function i() {
+        var b, c, d = {
+          height: f.innerHeight,
+          width: f.innerWidth
+        };
+        return d.height || (b = e.compatMode, (b || !a.support.boxModel) && (c = "CSS1Compat" === b ? g : e.body,
+          d = {
+            height: c.clientHeight,
+            width: c.clientWidth
+          })), d
+      }
+
+      function j() {
+        return {
+          top: f.pageYOffset || g.scrollTop || e.body.scrollTop,
+          left: f.pageXOffset || g.scrollLeft || e.body.scrollLeft
+        }
+      }
+
+      function k() {
+        if (b.length) {
+          var e = 0,
+            f = a.map(b, function (a) {
+              var b = a.data.selector,
+                c = a.$element;
+              return b ? c.find(b) : c
+            });
+          for (c = c || i(), d = d || j(); e < b.length; e++)
+            if (a.contains(g, f[e][0])) {
+              var h = a(f[e]),
+                k = {
+                  height: h[0].offsetHeight,
+                  width: h[0].offsetWidth
+                },
+                l = h.offset(),
+                m = h.data("inview");
+              if (!d || !c) return;
+              l.top + k.height > d.top && l.top < d.top + c.height && l.left + k.width > d.left && l.left < d.left + c
+                .width ? m || h.data("inview", !0).trigger("inview", [!0]) : m && h.data("inview", !1).trigger(
+                  "inview", [!1])
+            }
+        }
+      }
+      var c, d, h, b = [],
+        e = document,
+        f = window,
+        g = e.documentElement;
+      a.event.special.inview = {
+        add: function (c) {
+          b.push({
+            data: c,
+            $element: a(this),
+            element: this
+          }), !h && b.length && (h = setInterval(k, 250))
+        },
+        remove: function (a) {
+          for (var c = 0; c < b.length; c++) {
+            var d = b[c];
+            if (d.element === this && d.data.guid === a.guid) {
+              b.splice(c, 1);
+              break
+            }
+          }
+          b.length || (clearInterval(h), h = null)
+        }
+      }, a(f).on("scroll resize scrollstop", function () {
+        c = d = null
+      }), !g.addEventListener && g.attachEvent && g.attachEvent("onfocusin", function () {
+        d = null
+      })
+    });
+  </script>
+
+  <script src="js/lightbox.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      $('a[href^=#]').click(function () {
+        var speed = 900;
+        var href = $(this).attr("href");
+        var target = $(href == "#" || href == "" ? 'html' : href);
+        var position = target.offset().top;
+        $("html, body").animate({
+          scrollTop: position
+        }, speed, "swing");
+        return false;
+      });
+    });
+  </script>
+  
+  <script>
+    $(function () {
+      $('.fd-in').on('inview', function (event, isInView, visiblePartX, visiblePartY) {
+        if (isInView) {
+          $(this).stop().addClass('fd-done');
+        } else {
+          $(this).stop().removeClass('fd-done');
+        }
+      });
+    });
+  </script>
+  
+  <script>
+    $(function () {
+      $('.navToggle').click(function () {
+        $(this).toggleClass('active');
+
+        if ($(this).hasClass('active')) {
+          $('.nav').addClass('active');
+        } else {
+          $('.nav').removeClass('active');
+        }
+      });
+      $(function () {
+        $('.nav__list__item a').click(function () {
+          $('.nav').removeClass('active');
+          $('.navToggle').removeClass('active');
+        });
+      });
+    });
+  </script>
+
+  <script>
+    if (!navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/)) {
+      $(function () {
+        var body = document.body;
+        var cursor = document.createElement("div");
+        var stalker = document.createElement("div");
+        cursor.id = "cursor";
+        stalker.id = "stalker";
+        body.appendChild(cursor);
+        body.appendChild(stalker);
+        body.addEventListener("mousemove", function (e) {
+          cursor.style.left = e.clientX + "px";
+          cursor.style.top = e.clientY + "px";
+          stalker.style.left = e.clientX + "px";
+          stalker.style.top = e.clientY + "px";
+        }, false);
+      });
+    }
+  </script>
+ 
+</head>
+
+<body>
+
+  <!-- グローバルナビゲーション開始 -->
+  <nav class="nav">
+    <ul class="nav__list">
+      <li class="nav__list__item"><a href="#hero">TOP</a></li>
+      <li class="nav__list__item"><a href="#about">ABOUT</a></li>
+      <li class="nav__list__item"><a href="#point">POINT</a></li>
+      <li class="nav__list__item"><a href="#gallery">GALLERY</a></li>
+      <li class="nav__list__item"><a href="#contact">CONTACT</a></li>
+    </ul>
+  </nav>
+  <div class="navToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <!-- グローバルナビゲーション終了 -->
+
+  <!-- hero開始 -->
+  <section class="hero fd-in" id="hero">
+    <div class="hero__logo">
+      <h1 class="hero__logo__h1">さとうゆうき</h1>
+    </div>
+  </section>
+  <!-- hero終了 -->
+
+  <!-- about開始 -->
+  <section class="about fd-in" id="about">
+    <h2 class="section__title">About</h2>
+    <p class="section__title__description">私について</p>
+    <div class="about__container">
+      <div class="about__image">
+        <img src="images/abou.jpeg" alt="about画像">
+      </div>
+      <div class="about__text">
+        <p>
+          はじめまして。<br>
+          さとうゆうきと申します。<br>
+          WEBエンジニアを目指して就職活動中です。<br>
+          素朴で優しいデザインが好きです。<br>
+
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- about終了 -->
+
+  <!-- point開始 -->
+  <section class="point fd-in" id="point">
+    <h2 class="section__title">Point</h2>
+    <p class="section__title__description">自己PR</p>
+    <ol class="point__list">
+      <li class="point__item">
+        <i>1</i>
+        <h4 class="point__item__heading">
+          向学心
+        </h4>
+        <p>
+          向学心が強いです。これは常に学び続ける必要のあるエンジニアに必要な能力だと思っています。
+        </p>
+      </li>
+      <li class="point__item">
+        <i>2</i>
+        <h4 class="point__item__heading">
+          傾聴力
+        </h4>
+        <p>
+          私には傾聴力があります。
+        </p>
+      </li>
+      <li class="point__item">
+        <i>3</i>
+        <h4 class="point__item__heading">
+          現在のスキル
+        </h4>
+        <p>
+          HTML/CSS(SASS)+jQueryで簡単なものであれば作れるようになりました。現在はCSS設計を学習中で、BEMなどを参考に可読性、保守性、再利用性の高いセマンティックなコーディングをできるように心掛けています。
+        </p>
+      </li>
+    </ol>
+  </section>
+  <!-- point終了 -->
+
+  <!-- gallery開始 -->
+  <section class="gallery fd-in" id="gallery">
+    <h2 class="section__title">Gallery</h2>
+    <p class="section__title__description">フォトギャラリー</p>
+    <ul class="gallery__list">
+      <li class="gallery__item"><a class="image-link" href="./images/ScSh/sc1.png" data-lightbox="image-set"
+          data-title="写真家ASAYAMA FUYUKAのポートフォリオサイト（デモ）"><img src="./images/ScSh/sc1.png" alt="SNAPPERS"></a></li>
+      <li class="gallery__item"><a href="./images/ScSh/sc2.png" class="image-link" data-lightbox="image-set"
+          data-title="中古車販売店のサイト（デモ）"><img src="./images/ScSh/sc2.png" alt="demo"></a></li>
+      <li class="gallery__item"><a class="image-link" href="images/ScSh/s02.png" data-lightbox="image-set"
+          data-title="グリットレイアウトの練習で作成"><img src="images/ScSh/s02.png" alt="グリットレイアウト"></a></li>
+      <li class="gallery__item"><a class="image-link" href="images/ScSh/s03.png" data-lightbox="image-set"
+          data-title="スタンダードなレイアウトの練習"><img src="images/ScSh/s03.png" alt="スタンダードなレイアウト"></a></li>
+      <li class="gallery__item"><a class="image-link" href="images/ScSh/s05.png" data-lightbox="image-set"
+          data-title="LP制作の練習"><img src="images/ScSh/s04.png" alt="LP練習"></a></li>
+      <li class="gallery__item"><a class="image-link" href="images/ScSh/s08.png" data-lightbox="image-set"
+          data-title="制作の練習"><img src="images/ScSh/s08.png" alt="練習"></a></li>
+    </ul>
+  </section>
+  <!-- gallery終了 -->
+
+  <!-- contact開始 -->
+  <section class="contact fd-in" id="contact">
+    <h2 class="section__title">CONTACT</h2>
+    <p class="section__title__description">お問い合わせ</p>
+    <form class="contact-form">
+      <input type="text" name="name" placeholder="NAME">
+      <textarea name="message" placeholder="MESSAGE"></textarea>
+      <small>※こちらはデザイン例であり実際にメッセージは送れません</small>
+      <input type="submit" value="SEND MESSAGE">
+    </form>
+  </section>
+  <!-- footer -->
+  <footer>
+    <small>&copy; 2021 さとうゆうき</small>
+  </footer>
+
+</body>
+
+</html>
